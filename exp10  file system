@@ -1,0 +1,15 @@
+const fs = require("fs")
+const path = require("path")
+
+const dirName = path.join(__dirname, "/test")
+const filePath = dirName + "\\some.txt"
+
+fs.writeFileSync(filePath, `${filePath} is Writed`)
+fs.appendFileSync(filePath, "\nHello world!")
+
+const data = fs.readFileSync(filePath, "utf-8")
+console.log(data)
+
+fs.renameSync(filePath, dirName + "\\newText.txt")
+
+fs.unlinkSync(dirName + "\\newText.txt");
