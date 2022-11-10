@@ -1,0 +1,43 @@
+# Validation Of Login Form
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="post" onsubmit="handleSubmit(); return false">
+      <label for="name">Enter Name</label>
+      <input type="text" name="name" id="name" />
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" />
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" />
+      <button type="submit" id="submit">Submit</button>
+    </form>
+  </body>
+  <script>
+    function handleSubmit() {
+      console.log("Hello");
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const pass_regex = /^[A-Za-z0-9@!#]{6,12}$/;
+      const email_regex = /^[A-Za-z0-9.-_%&]+@gmail\.com$/;
+
+      if (name == "" || name == undefined) {
+        alert("Enter Valid Name");
+      } else if (email == "" || !email_regex.test(email)) {
+        console.log(email_regex.test(email), email)
+        alert("Enter valid Email");
+      } else if (password == "" || !pass_regex.test(password)) {
+        console.log(pass_regex.test(password), password)
+        alert("Enter Valid Password");
+      } else {
+        alert("Data Is valid");
+      }
+    }
+  </script>
+</html>
