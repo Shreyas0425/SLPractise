@@ -1,0 +1,30 @@
+# File Server By Index.js Exp11
+
+const http = require("http")
+const fs = require("fs")
+
+const server = http.createServer((req,res) => {
+  res.writeHead(200, {
+    "Content-Type": "text/html;"
+  });
+  fs.readFile("start.html", "utf8", (err, data) => {
+    if(err){
+      res.write(404);
+      res.write("Error In File");
+    }
+    else{
+      res.write(data);
+    }
+    res.end();
+  });
+});
+
+
+server.listen(5555,(err) => {
+  if(err){
+    console.log("Error",err);
+  }
+  else{
+    console.log("Hosted At 5555")
+  }
+})
